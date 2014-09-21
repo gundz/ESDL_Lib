@@ -1,8 +1,5 @@
 #include <easy_sdl.h>
-
 #include <SDL.h>
-
-#include <stdio.h>
 
 void					test(t_esdl *esdl)
 {

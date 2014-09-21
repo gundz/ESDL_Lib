@@ -50,6 +50,10 @@ void					update_events(t_input *in);
 void					fps_counter(t_esdl *esdl);
 
 void					put_pixel(SDL_Surface *const surf, const int x, const int y, const int color);
+
+SDL_Color				sdl_int_to_color(int color);
+int						sdl_color_to_int(SDL_Color color);
+
 void					draw_line(SDL_Surface *surf, SDL_Rect rect, const int color);
 void					draw_square(SDL_Surface *surf, const SDL_Rect rect, const int color);
 void					clear_screen(SDL_Surface *surf, const int color);

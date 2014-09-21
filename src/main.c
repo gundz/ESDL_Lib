@@ -9,7 +9,7 @@ void					test(t_esdl *esdl)
 
 	if (square == NULL)
 	{
-		surf = SDL_CreateRGBSurface(0, 200, 200, 32, 0xff000000, 0x00ff0000, 0x0000ff00, 0x000000ff);
+		surf = sdl_create_surface(200, 200);
 		draw_square(surf, rect, 0xFFFFFFFF);
 		square = SDL_CreateTextureFromSurface(esdl->en.ren, surf);
 	}

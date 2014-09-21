@@ -49,6 +49,7 @@ void					update_events(t_input *in);
 
 void					fps_counter(t_esdl *esdl);
 
+SDL_Surface				*sdl_create_surface(int width, int height);
 void					put_pixel(SDL_Surface *const surf, const int x, const int y, const int color);
 
 SDL_Color				sdl_int_to_color(int color);

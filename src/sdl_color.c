@@ -9,7 +9,7 @@ SDL_Color					sdl_int_to_color(int color)
 	ret_color.a = (color) & 0xFF;
 	return (ret_color);
 }
-#include <stdio.h>
+
 int							sdl_color_to_int(SDL_Color color)
 {
 	int						ret_color;

@@ -19,6 +19,7 @@ SRC =		\
 			sdl_fps_counter.c \
 			sdl_draw.c \
 			sdl_color.c \
+			sdl_surface.c \
 
 SRC +=	main.c
 

@@ -3,7 +3,11 @@ NAME = Project
 CC =  gcc
 CFLAGS = -Wall -Wextra -Werror -O3
 CFLAGS += `sdl2-config --cflags`
+
 LFLAGS += `sdl2-config --libs`
+
+#CFLAGS += -I /usr/include/SDL2
+#LFLAGS += -lSDL2_image
 
 PATH_INC = includes/
 PATH_OBJ = obj

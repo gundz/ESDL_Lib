@@ -1,5 +1,5 @@
-Easy_SDL
+SDL_Lib
 ========
 A Fast way to start a SDL2 project !
 ========
-Easy_SDL download and compilate the SDL2 and contain the basic function of a SDL project, simply add file to the makefile !
+SDL_Lib contain the basic function of a SDL project, simply add files to the makefile !

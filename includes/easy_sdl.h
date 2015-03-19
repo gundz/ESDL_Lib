@@ -1,15 +1,29 @@
-#ifndef                 EASY_SDL_H
-# define                EASY_SDL_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   easy_sdl.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fgundlac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/03/16 17:05:03 by fgundlac          #+#    #+#             */
+/*   Updated: 2015/03/16 17:10:18 by fgundlac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-# include               <SDL.h>
+#ifndef EASY_SDL_H
+# define EASY_SDL_H
 
-# define RX             1024
-# define RY             768
+# include <SDL.h>
+
+# define RX             640
+# define RY             480
 # define NAME           "Engine"
 
 typedef struct          s_input
 {
     char                key[SDL_NUM_SCANCODES];
+    char                button[8];
+    int                 mw_y;
     int                 m_x;
     int                 m_y;
     int                 m_r_x;
@@ -25,38 +39,49 @@ typedef struct          s_engine
 
 typedef struct          s_pt
 {
-    double              x;
-    double              y;
+    float               x;
+    float               y;
 }                       t_pt;
 
-typedef struct			s_timer
+typedef struct          s_v2d
 {
-	int					fps;
-	int					current;
-	int					update;
-	char				title[128];
-}						t_timer;
+    long double         x;
+    long double         y;
+}                       t_v2d;
+
+typedef struct          s_timer
+{
+    int                 fps;
+    int                 current;
+    int                 update;
+    char                title[128];
+}                       t_timer;
 
 typedef struct          s_esdl
 {
     t_engine            en;
-    t_timer				fps;
+    t_timer             fps;
+    int                 run;
 }                       t_esdl;
 
-int						init_sdl(t_esdl *esdl);
+int                     init_sdl(t_esdl *esdl);
+void                    quit_sdl(t_esdl *esdl);
 
-void					update_events(t_input *in);
+int                     update_events(t_input *in, int *run);
 
-void					fps_counter(t_esdl *esdl);
+void                    fps_counter(t_esdl *esdl);
 
-SDL_Surface				*sdl_create_surface(int width, int height);
-void					put_pixel(SDL_Surface *const surf, const int x, const int y, const int color);
+SDL_Surface             *sdl_create_surface(int width, int height);
+void                    put_pixel(SDL_Surface *const surf,
+        const int x, const int y, const int color);
 
-SDL_Color				sdl_int_to_color(int color);
-int						sdl_color_to_int(SDL_Color color);
+SDL_Color               sdl_int_to_color(int color);
+int                     sdl_color_to_int(SDL_Color color);
 
-void					draw_line(SDL_Surface *surf, SDL_Rect rect, const int color);
-void					draw_square(SDL_Surface *surf, const SDL_Rect rect, const int color);
-void					clear_screen(SDL_Surface *surf, const int color);
+void                    draw_line(SDL_Surface *surf, SDL_Rect rect,
+        const int color);
+void                    draw_square(SDL_Surface *surf, const SDL_Rect rect,
+        const int color);
+void                    clear_screen(SDL_Surface *surf, const int color);
 
 #endif

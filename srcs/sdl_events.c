@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 
-static int			check_input(SDL_Event *event, t_input *in)
+static int			get_input(SDL_Event *event, t_input *in)
 {
 	int				ret;
 
@@ -23,7 +23,7 @@ static int			check_input(SDL_Event *event, t_input *in)
 	return (ret);
 }
 
-static int			check_mouse(SDL_Event *event, t_input *in)
+static int			get_mouse(SDL_Event *event, t_input *in)
 {
 	int				ret;
 
@@ -41,6 +41,13 @@ static int			check_mouse(SDL_Event *event, t_input *in)
 	return (ret);
 }
 
+int					check_input(t_esdl *esdl, const int input)
+{
+	if (esdl->en.in.key[input])
+		return (1);
+	return (0);
+}
+
 int					update_events(t_input *in, int *run)
 {
 	SDL_Event		event;
@@ -51,9 +58,9 @@ int					update_events(t_input *in, int *run)
 	SDL_GetRelativeMouseState(&in->m_r_x, &in->m_r_y);
 	while (SDL_PollEvent(&event))
 	{
-		if ((ret += check_input(&event, in)) > 0)
+		if ((ret += get_input(&event, in)) > 0)
 			break ;
-		if ((ret += check_mouse(&event, in)) > 0)
+		if ((ret += get_mouse(&event, in)) > 0)
 			break ;
 		else if (event.type == SDL_QUIT)
 			*run = 0;

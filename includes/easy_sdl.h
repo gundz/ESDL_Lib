@@ -74,6 +74,7 @@ int                     init_sdl(t_esdl *esdl);
 void                    quit_sdl(t_esdl *esdl);
 
 int                     update_events(t_input *in, int *run);
+int						check_input(t_esdl *esdl, const int input);
 
 void                    fps_counter(t_esdl *esdl);
 void                    fps_limit(t_esdl *esdl);

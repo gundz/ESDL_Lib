@@ -30,7 +30,7 @@ int					main(int argc, char **argv)
 
 	if (init_sdl(&esdl) == -1)
 		return (-1);
-	while (!esdl.en.in.key[SDL_SCANCODE_ESCAPE])
+	while (!check_input(&esdl, SDL_SCANCODE_ESCAPE))
 	{
 		update_events(&esdl.en.in, &esdl.run);
 

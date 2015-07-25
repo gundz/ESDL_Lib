@@ -23,7 +23,7 @@ CFLAGS =		-Wall -Werror -Wextra
 #LIB_PATH =		./libfoo/ ./libbar/
 LIB_SUPP_INC =	`sdl2-config --cflags`
 
-LIB_SUPP =		`sdl2-config --libs` -lm
+LIB_SUPP =		`sdl2-config --libs` -lSDL2_image -lm
 
 SRC_PATH = 		./srcs/
 INC_PATH = 		./includes/

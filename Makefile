@@ -17,7 +17,7 @@ TYPE =			PROGAM
 CC =			gcc
 EXTENTION =		c
 
-CFLAGS =		-Wall -Werror -Wextra	
+CFLAGS =		-Wall -Werror -Wextra
 
 #LIB_NAMES =		-lfoo -lbar
 #LIB_PATH =		./libfoo/ ./libbar/

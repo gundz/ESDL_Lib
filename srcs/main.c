@@ -33,8 +33,11 @@ int					main(int argc, char **argv)
 	while (!esdl.en.in.key[SDL_SCANCODE_ESCAPE])
 	{
 		update_events(&esdl.en.in, &esdl.run);
-		fps_counter(&esdl);
+
 		test(&esdl);
+
+		fps_limit(&esdl);
+		fps_counter(&esdl);
 	}
 	quit_sdl(&esdl);
 	(void)argc;

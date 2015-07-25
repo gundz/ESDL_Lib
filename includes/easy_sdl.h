@@ -15,8 +15,10 @@
 
 # include <SDL.h>
 
+/*		CONFIG		*/
 # define RX             640
 # define RY             480
+# define MAX_FPS        60
 # define NAME           "Engine"
 
 typedef struct          s_input
@@ -55,6 +57,7 @@ typedef struct          s_timer
     int                 current;
     int                 update;
     char                title[128];
+    unsigned int		frameLimit;
 }                       t_timer;
 
 typedef struct          s_esdl
@@ -64,12 +67,16 @@ typedef struct          s_esdl
     int                 run;
 }                       t_esdl;
 
+/*		CONFIG VAR, DO NOT TOUCH 		*/
+# define MAX_FPS_VAL 1000 / MAX_FPS
+
 int                     init_sdl(t_esdl *esdl);
 void                    quit_sdl(t_esdl *esdl);
 
 int                     update_events(t_input *in, int *run);
 
 void                    fps_counter(t_esdl *esdl);
+void                    fps_limit(t_esdl *esdl);
 
 SDL_Surface             *sdl_create_surface(int width, int height);
 void                    put_pixel(SDL_Surface *const surf,

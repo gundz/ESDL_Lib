@@ -10,6 +10,7 @@ void				init_esdl(t_esdl *esdl)
 	esdl->fps.fps = 0;
 	esdl->fps.update = 0;
 	esdl->run = 1;
+	fps_limit(esdl);
 }
 
 int					init_sdl(t_esdl *esdl)

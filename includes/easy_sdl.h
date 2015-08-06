@@ -35,6 +35,8 @@ typedef struct          s_input
 typedef struct          s_engine
 {
     SDL_Window          *win;
+    int					rx;
+    int					ry;
     SDL_Renderer        *ren;
     t_input             in;
 }                       t_engine;

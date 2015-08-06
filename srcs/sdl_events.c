@@ -41,9 +41,9 @@ static int			get_mouse(SDL_Event *event, t_input *in)
 	return (ret);
 }
 
-int					check_input(t_esdl *esdl, const int input)
+int					check_input(t_input *in, const int input)
 {
-	if (esdl->en.in.key[input])
+	if (in->key[input])
 		return (1);
 	return (0);
 }
@@ -58,12 +58,12 @@ int					update_events(t_input *in, int *run)
 	SDL_GetRelativeMouseState(&in->m_r_x, &in->m_r_y);
 	while (SDL_PollEvent(&event))
 	{
+		if (event.type == SDL_QUIT || check_input(in, SDL_SCANCODE_ESCAPE))
+			*run = 0;
 		if ((ret += get_input(&event, in)) > 0)
 			break ;
 		if ((ret += get_mouse(&event, in)) > 0)
 			break ;
-		else if (event.type == SDL_QUIT)
-			*run = 0;
 	}
 	return (ret);
 }

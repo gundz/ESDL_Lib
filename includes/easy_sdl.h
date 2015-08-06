@@ -73,7 +73,9 @@ typedef struct          s_esdl
 # define MAX_FPS_VAL 1000 / MAX_FPS
 
 int                     init_sdl(t_esdl *esdl);
-void                    quit_sdl(t_esdl *esdl);
+void               	    quit_sdl(t_esdl *esdl);
+
+void					update_window_info(t_esdl *esdl);
 
 int                     update_events(t_input *in, int *run);
 int						check_input(t_esdl *esdl, const int input);

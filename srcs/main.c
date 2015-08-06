@@ -13,9 +13,9 @@ void					test(t_esdl *esdl)
 		draw_square(surf, rect, 0xFFFFFFFF);
 		square = SDL_CreateTextureFromSurface(esdl->en.ren, surf);
 	}
-	if (rect.x >= RX)
+	if (rect.x >= esdl->en.rx - 200)
 		rect.x = 0;
-	if (rect.y >= RY)
+	if (rect.y >= esdl->en.ry - 200)
 		rect.y = 0;
 	rect.x++;
 	rect.y++;
@@ -32,6 +32,7 @@ int					main(int argc, char **argv)
 		return (-1);
 	while (!check_input(&esdl, SDL_SCANCODE_ESCAPE))
 	{
+		update_window_info(&esdl);
 		update_events(&esdl.en.in, &esdl.run);
 
 		test(&esdl);

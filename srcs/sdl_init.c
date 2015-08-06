@@ -23,6 +23,11 @@ static void				init_esdl(t_esdl *esdl)
 	fps_limit(esdl);
 }
 
+void				update_window_info(t_esdl *esdl)
+{
+	SDL_GetWindowSize(esdl->en.win, &esdl->en.rx, &esdl->en.ry);
+}
+
 int					init_sdl(t_esdl *esdl)
 {
 	int				ret;
@@ -36,7 +41,7 @@ int					init_sdl(t_esdl *esdl)
 	}
 
 	esdl->en.win = SDL_CreateWindow(NAME, SDL_WINDOWPOS_UNDEFINED,
-		SDL_WINDOWPOS_UNDEFINED, RX, RY, SDL_WINDOW_SHOWN);
+		SDL_WINDOWPOS_UNDEFINED, RX, RY, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
 	if (!esdl->en.win)
 	{
 		ret = -1;

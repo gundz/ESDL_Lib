@@ -72,28 +72,28 @@ typedef struct          s_esdl
 /*		CONFIG VAR, DO NOT TOUCH 		*/
 # define MAX_FPS_VAL 1000 / MAX_FPS
 
-int                     init_sdl(t_esdl *esdl);
-void               	    quit_sdl(t_esdl *esdl);
+int                     Esdl_init(t_esdl *esdl);
+void               	    Esdl_quit(t_esdl *esdl);
 
-void					update_window_info(t_esdl *esdl);
+void					Esdl_update_window_info(t_esdl *esdl);
 
-int                     update_events(t_input *in, int *run);
-int						check_input(t_input *in, const int input);
+int                     Esdl_update_events(t_input *in, int *run);
+int						Esdl_check_input(t_input *in, const int input);
 
-void                    fps_counter(t_esdl *esdl);
-void                    fps_limit(t_esdl *esdl);
+void                    Esdl_fps_counter(t_esdl *esdl);
+void                    Esdl_fps_limit(t_esdl *esdl);
 
-SDL_Surface             *sdl_create_surface(int width, int height);
-void                    put_pixel(SDL_Surface *const surf,
+SDL_Surface             *Esdl_create_surface(int width, int height);
+void                    Esdl_put_pixel(SDL_Surface *const surf,
         const int x, const int y, const int color);
 
-SDL_Color               sdl_int_to_color(int color);
-int                     sdl_color_to_int(SDL_Color color);
+SDL_Color               Esdl_sdl_int_to_color(int color);
+int                     Esdl_sdl_color_to_int(SDL_Color color);
 
-void                    draw_line(SDL_Surface *surf, SDL_Rect rect,
+void                    Esdl_draw_line(SDL_Surface *surf, SDL_Rect rect,
         const int color);
-void                    draw_square(SDL_Surface *surf, const SDL_Rect rect,
+void                    Esdl_draw_square(SDL_Surface *surf, const SDL_Rect rect,
         const int color);
-void                    clear_screen(SDL_Surface *surf, const int color);
+void                    Esdl_clear_screen(SDL_Surface *surf, const int color);
 
 #endif

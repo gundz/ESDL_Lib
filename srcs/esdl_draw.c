@@ -8,7 +8,7 @@ int				ft_abs(int num)
 	return (num);
 }
 
-void			put_pixel(SDL_Surface *const surf, const int x, const int y, const int color)
+void			Esdl_put_pixel(SDL_Surface *const surf, const int x, const int y, const int color)
 {
 	int			bpp;
 	Uint32		*p;
@@ -23,7 +23,7 @@ void			put_pixel(SDL_Surface *const surf, const int x, const int y, const int co
 	}
 }
 
-void			draw_line(SDL_Surface *surf, SDL_Rect rect, const int color)
+void			ESDL_draw_line(SDL_Surface *surf, SDL_Rect rect, const int color)
 {
 	t_pt		d;
 	t_pt		s;
@@ -37,12 +37,12 @@ void			draw_line(SDL_Surface *surf, SDL_Rect rect, const int color)
 	err = d.x - d.y;
 	while (rect.x != rect.w || rect.y != rect.h)
 	{
-		put_pixel(surf, rect.x, rect.y, color);
+		Esdl_put_pixel(surf, rect.x, rect.y, color);
 		if ((e2 = 2 * err) > -d.y)
 			err -= (d.y + 0 * (rect.x += s.x));
 		if (rect.x == rect.w && rect.y == rect.h)
 		{
-			put_pixel(surf, rect.x, rect.y, color);
+			Esdl_put_pixel(surf, rect.x, rect.y, color);
 			return ;
 		}
 		if (e2 < d.x)
@@ -50,7 +50,7 @@ void			draw_line(SDL_Surface *surf, SDL_Rect rect, const int color)
 	}
 }
 
-void		draw_square(SDL_Surface *surf, const SDL_Rect rect, const int color)
+void		Esdl_draw_square(SDL_Surface *surf, const SDL_Rect rect, const int color)
 {
 	int		x;
 	int		y;
@@ -61,14 +61,14 @@ void		draw_square(SDL_Surface *surf, const SDL_Rect rect, const int color)
 		x = 0;
 		while (x < rect.w)
 		{
-			put_pixel(surf, x + rect.x, y + rect.y, color);
+			Esdl_put_pixel(surf, x + rect.x, y + rect.y, color);
 			x++;
 		}
 		y++;
 	}
 }
 
-void		clear_screen(SDL_Surface *surf, const int color)
+void		Esdl_clear_screen(SDL_Surface *surf, const int color)
 {
 	int		x;
 	int		y;
@@ -79,7 +79,7 @@ void		clear_screen(SDL_Surface *surf, const int color)
 		x = 0;
 		while (x < surf->w)
 		{
-			put_pixel(surf, x, y, color);
+			Esdl_put_pixel(surf, x, y, color);
 			x++;
 		}
 		y++;

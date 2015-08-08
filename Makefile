@@ -1,18 +1,15 @@
-NAME =			a.out
+NAME =			libesdl.a
 
 SRCS =			\
-				sdl_init.c \
-				sdl_events.c \
-				sdl_fps.c \
-				sdl_draw.c \
-				sdl_color.c \
-				sdl_surface.c \
-
-SRCS +=			\
-				main.c \
+				esdl_init.c \
+				esdl_events.c \
+				esdl_fps.c \
+				esdl_draw.c \
+				esdl_color.c \
+				esdl_surface.c \
 
 #TYPE: LIB or PROGRAM
-TYPE =			PROGAM
+TYPE =			LIB
 
 CC =			gcc
 EXTENTION =		c
@@ -21,8 +18,8 @@ CFLAGS =		-Wall -Werror -Wextra
 
 #LIB_NAMES =		-lfoo -lbar
 #LIB_PATH =		./libfoo/ ./libbar/
-LIB_SUPP_INC =	`sdl2-config --cflags`
 
+LIB_SUPP_INC =	`sdl2-config --cflags`
 LIB_SUPP =		`sdl2-config --libs` -lSDL2_image -lm
 
 SRC_PATH = 		./srcs/

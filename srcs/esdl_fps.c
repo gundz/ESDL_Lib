@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 
-void			fps_counter(t_esdl *esdl)
+void				Esdl_fps_counter(t_esdl *esdl)
 {
 	if ((esdl->fps.update = SDL_GetTicks()) - esdl->fps.current >= 1000)
 	{
@@ -14,7 +14,7 @@ void			fps_counter(t_esdl *esdl)
 	esdl->fps.fps++;
 }
 
-static void			fps_limit_delay(const unsigned int frameLimit)
+static void			Esdl_fps_limit_delay(const unsigned int frameLimit)
 {
 	unsigned int	ticks = SDL_GetTicks();
 
@@ -26,8 +26,8 @@ static void			fps_limit_delay(const unsigned int frameLimit)
 		SDL_Delay(frameLimit - ticks);
 }
 
-void				fps_limit(t_esdl *esdl)
+void				Esdl_fps_limit(t_esdl *esdl)
 {
-	fps_limit_delay(esdl->fps.frameLimit);
+	Esdl_fps_limit_delay(esdl->fps.frameLimit);
 	esdl->fps.frameLimit = SDL_GetTicks() + MAX_FPS_VAL;
 }

@@ -1,11 +1,8 @@
 #include <easy_sdl.h>
 
-#include <SDL.h>
-
 #include <stdlib.h>
 
-
-static int			get_input(SDL_Event *event, t_input *in)
+static int			Esdl_get_input(SDL_Event *event, t_input *in)
 {
 	int				ret;
 
@@ -23,7 +20,7 @@ static int			get_input(SDL_Event *event, t_input *in)
 	return (ret);
 }
 
-static int			get_mouse(SDL_Event *event, t_input *in)
+static int			Esdl_get_mouse(SDL_Event *event, t_input *in)
 {
 	int				ret;
 
@@ -41,14 +38,14 @@ static int			get_mouse(SDL_Event *event, t_input *in)
 	return (ret);
 }
 
-int					check_input(t_input *in, const int input)
+int					Esdl_check_input(t_input *in, const int input)
 {
 	if (in->key[input])
 		return (1);
 	return (0);
 }
 
-int					update_events(t_input *in, int *run)
+int					Esdl_update_events(t_input *in, int *run)
 {
 	SDL_Event		event;
 	int				ret;
@@ -58,11 +55,11 @@ int					update_events(t_input *in, int *run)
 	SDL_GetRelativeMouseState(&in->m_r_x, &in->m_r_y);
 	while (SDL_PollEvent(&event))
 	{
-		if (event.type == SDL_QUIT || check_input(in, SDL_SCANCODE_ESCAPE))
+		if (event.type == SDL_QUIT || Esdl_check_input(in, SDL_SCANCODE_ESCAPE))
 			*run = 0;
-		if ((ret += get_input(&event, in)) > 0)
+		if ((ret += Esdl_get_input(&event, in)) > 0)
 			break ;
-		if ((ret += get_mouse(&event, in)) > 0)
+		if ((ret += Esdl_get_mouse(&event, in)) > 0)
 			break ;
 	}
 	return (ret);

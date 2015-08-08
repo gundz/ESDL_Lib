@@ -1,5 +1,6 @@
 #include <easy_sdl.h>
-SDL_Color					sdl_int_to_color(int color)
+
+SDL_Color					esdl_int_to_color(int color)
 {
 	SDL_Color				ret_color;
 
@@ -10,7 +11,7 @@ SDL_Color					sdl_int_to_color(int color)
 	return (ret_color);
 }
 
-int							sdl_color_to_int(SDL_Color color)
+int							esdl_color_to_int(SDL_Color color)
 {
 	int						ret_color;
 

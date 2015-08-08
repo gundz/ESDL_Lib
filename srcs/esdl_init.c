@@ -1,17 +1,17 @@
 #include <easy_sdl.h>
-#include <SDL.h>
+
 #include <string.h>
 #include <stdio.h>
 
-static void				get_screen_resolution(int *rx, int *ry)
+static void				Esdl_get_screen_resolution(int *rx, int *ry)
 {
 	*rx = RX;
 	*ry = RY;
 }
 
-static void				init_esdl(t_esdl *esdl)
+static void				Esdl_init_esdl(t_esdl *esdl)
 {
-	get_screen_resolution(&esdl->en.rx, &esdl->en.ry);
+	Esdl_get_screen_resolution(&esdl->en.rx, &esdl->en.ry);
 
 	memset(&esdl->en.in, 0, sizeof(t_input));
 
@@ -20,19 +20,19 @@ static void				init_esdl(t_esdl *esdl)
 	esdl->fps.update = 0;
 	esdl->run = 1;
 
-	fps_limit(esdl);
+	Esdl_fps_limit(esdl);
 }
 
-void				update_window_info(t_esdl *esdl)
+void				Esdl_update_window_info(t_esdl *esdl)
 {
 	SDL_GetWindowSize(esdl->en.win, &esdl->en.rx, &esdl->en.ry);
 }
 
-int					init_sdl(t_esdl *esdl)
+int					Esdl_init(t_esdl *esdl)
 {
 	int				ret;
 
-	init_esdl(esdl);
+	Esdl_init_esdl(esdl);
 	ret = 0;
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 	{
@@ -58,7 +58,7 @@ int					init_sdl(t_esdl *esdl)
 	return (ret);
 }
 
-void				quit_sdl(t_esdl *esdl)
+void				Esdl_quit(t_esdl *esdl)
 {
     SDL_DestroyRenderer(esdl->en.ren);
 	SDL_DestroyWindow(esdl->en.win);

@@ -1,6 +1,6 @@
 #include <SDL.h>
 
-SDL_Surface			*sdl_create_surface(int width, int height)
+SDL_Surface			*Esdl_create_surface(int width, int height)
 {
 	SDL_Surface		*surf;
 

@@ -13,7 +13,7 @@ void			Esdl_put_pixel(SDL_Surface *const surf, const int x, const int y, const i
 	int			bpp;
 	Uint32		*p;
 
-	if ((x >= 0 && y >= 0) && (x < RX && y < RY))
+	if ((x >= 0 && y >= 0) && (x < surf->w && y < surf->h))
 	{
 		SDL_LockSurface(surf);
 		bpp = surf->format->BytesPerPixel;

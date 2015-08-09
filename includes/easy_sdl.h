@@ -15,12 +15,6 @@
 
 # include <SDL.h>
 
-/*		CONFIG		*/
-# define RX             640
-# define RY             480
-# define MAX_FPS        60
-# define NAME           "Engine"
-
 typedef struct          s_input
 {
     char                key[SDL_NUM_SCANCODES];

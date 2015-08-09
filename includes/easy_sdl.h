@@ -58,6 +58,7 @@ typedef struct          s_timer
     int                 fps;
     int                 current;
     int                 update;
+    int					limit;
     char                title[128];
     unsigned int		frameLimit;
 }                       t_timer;
@@ -72,7 +73,7 @@ typedef struct          s_esdl
 /*		CONFIG VAR, DO NOT TOUCH 		*/
 # define MAX_FPS_VAL 1000 / MAX_FPS
 
-int                     Esdl_init(t_esdl *esdl);
+int						Esdl_init(t_esdl *esdl, const int rx, const int ry, const int max_fps, char *engine_name);
 void               	    Esdl_quit(t_esdl *esdl);
 
 void					Esdl_update_window_info(t_esdl *esdl);

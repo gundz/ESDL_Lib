@@ -14,20 +14,21 @@ void				Esdl_fps_counter(t_esdl *esdl)
 	esdl->fps.fps++;
 }
 
-static void			Esdl_fps_limit_delay(const unsigned int frameLimit)
+static void			Esdl_fps_limit_delay(t_esdl *esdl, const unsigned int frameLimit)
 {
 	unsigned int	ticks = SDL_GetTicks();
+	int				max = (1000 / esdl->fps.limit);
 
 	if (frameLimit < ticks)
 		return ;
-	if (frameLimit > ticks + MAX_FPS_VAL)
-		SDL_Delay(MAX_FPS_VAL);
+	if (frameLimit > ticks + max)
+		SDL_Delay(max);
 	else
 		SDL_Delay(frameLimit - ticks);
 }
 
 void				Esdl_fps_limit(t_esdl *esdl)
 {
-	Esdl_fps_limit_delay(esdl->fps.frameLimit);
-	esdl->fps.frameLimit = SDL_GetTicks() + MAX_FPS_VAL;
+	Esdl_fps_limit_delay(esdl, esdl->fps.frameLimit);
+	esdl->fps.frameLimit = SDL_GetTicks() + (1000 / esdl->fps.limit);
 }

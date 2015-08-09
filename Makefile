@@ -1,17 +1,22 @@
 NAME =			libesdl.a
 
 SRCS =			\
-				esdl_init.c \
-				esdl_events.c \
-				esdl_fps.c \
-				esdl_draw.c \
-				esdl_color.c \
-				esdl_surface.c \
+			esdl_init.c \
+			esdl_events.c \
+			esdl_fps.c \
+			esdl_draw.c \
+			esdl_color.c \
+			esdl_surface.c \
 
 #TYPE: LIB or PROGRAM
 TYPE =			LIB
 
-CC =			gcc
+#OS: LINUX/OSX or WINDOWS
+OS =			LINUX
+
+UNIX_CC =		gcc
+WIN_CC =		i686-w64-mingw32-gcc
+
 EXTENTION =		c
 
 CFLAGS =		-Wall -Werror -Wextra
@@ -19,13 +24,21 @@ CFLAGS =		-Wall -Werror -Wextra
 #LIB_NAMES =		-lfoo -lbar
 #LIB_PATH =		./libfoo/ ./libbar/
 
-LIB_SUPP_INC =	`sdl2-config --cflags`
-LIB_SUPP =		`sdl2-config --libs` -lSDL2_image -lm
+ifeq ($(OS), WINDOWS)
+SDL2_WIN_PATH =		$(shell pwd)/SDL2
+LIB_SUPP_INC =		`SDL2/bin/sdl2-config --prefix=$(SDL2_WIN_PATH) --cflags`
+LIB_SUPP =		`SDL2/bin/sdl2-config --prefix=$(SDL2_WIN_PATH) --libs`
+else
+LIB_SUPP_INC =		`sdl2-config --cflags`
+LIB_SUPP =		`sdl2-config --libs`
+endif
+
 
 SRC_PATH = 		./srcs/
 INC_PATH = 		./includes/
 OBJ_PATH =		./obj/
 
+CC =			$(UNIX_CC)
 OBJ_NAME = $(SRCS:.$(EXTENTION)=.o)
 SRC = $(addprefix $(SRC_PATH), $(SRCS))
 OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
@@ -34,6 +47,12 @@ INC = $(addprefix -I, $(INC_PATH))
 INC += $(LIB_SUPP_INC)
 LDFLAGS = $(LIB) $(LIB_NAMES)
 EMPTY =
+
+ifeq ($(OS), WINDOWS)
+NAME := $(NAME)
+CC = $(WIN_CC)
+else
+endif
 
 all: libs name $(OBJ) done $(NAME)
 

@@ -23,7 +23,7 @@ void			Esdl_put_pixel(SDL_Surface *const surf, const int x, const int y, const i
 	}
 }
 
-void			ESDL_draw_line(SDL_Surface *surf, SDL_Rect rect, const int color)
+void			Esdl_draw_line(SDL_Surface *surf, SDL_Rect rect, const int color)
 {
 	t_pt		d;
 	t_pt		s;

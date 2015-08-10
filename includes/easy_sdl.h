@@ -65,9 +65,6 @@ typedef struct          s_esdl
     int                 run;
 }                       t_esdl;
 
-/*		CONFIG VAR, DO NOT TOUCH 		*/
-# define MAX_FPS_VAL 1000 / MAX_FPS
-
 int						Esdl_init(t_esdl *esdl, const int rx, const int ry, const int max_fps, char *engine_name);
 void               	    Esdl_quit(t_esdl *esdl);
 
@@ -83,7 +80,7 @@ SDL_Surface             *Esdl_create_surface(int width, int height);
 void                    Esdl_put_pixel(SDL_Surface *const surf,
         const int x, const int y, const int color);
 
-SDL_Texture				*Esdl_load_texture(t_esdl *esdl, char *path);
+SDL_Texture				*Esdl_load_texture(t_esdl *esdl, char *path, int *w, int *h);
 
 SDL_Color               Esdl_sdl_int_to_color(int color);
 int                     Esdl_sdl_color_to_int(SDL_Color color);

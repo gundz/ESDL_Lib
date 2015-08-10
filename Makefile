@@ -26,12 +26,24 @@ CFLAGS =		-Wall -Werror -Wextra
 #LIB_PATH =		./libfoo/ ./libbar/
 
 ifeq ($(OS), WINDOWS)
+<<<<<<< HEAD
 SDL2_WIN_PATH =	$(shell pwd)/SDL2
 LIB_SUPP_INC =	`SDL2/bin/sdl2-config --prefix=$(SDL2_WIN_PATH) --cflags`
 LIB_SUPP =		`SDL2/bin/sdl2-config --prefix=$(SDL2_WIN_PATH) --libs` -lSDL2_image
 else
 LIB_SUPP_INC =	`sdl2-config --cflags`
 LIB_SUPP =		`sdl2-config --libs` -lSDL2_image
+=======
+SDL2_WIN_PATH =		$(shell pwd)/SDL2
+LIB_SUPP_INC =		`SDL2/bin/sdl2-config --prefix=$(SDL2_WIN_PATH) --cflags`
+LIB_SUPP =		`SDL2/bin/sdl2-config --prefix=$(SDL2_WIN_PATH) --libs`
+NAME := $(NAME)
+CC = $(WIN_CC)
+else
+LIB_SUPP_INC =		`sdl2-config --cflags`
+LIB_SUPP =		`sdl2-config --libs`
+CC =			$(UNIX_CC)
+>>>>>>> 2221a970adf755932271057e84d422ef27d49e83
 endif
 
 
@@ -39,7 +51,6 @@ SRC_PATH = 		./srcs/
 INC_PATH = 		./includes/
 OBJ_PATH =		./obj/
 
-CC =			$(UNIX_CC)
 OBJ_NAME = $(SRCS:.$(EXTENTION)=.o)
 SRC = $(addprefix $(SRC_PATH), $(SRCS))
 OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
@@ -48,12 +59,6 @@ INC = $(addprefix -I, $(INC_PATH))
 INC += $(LIB_SUPP_INC)
 LDFLAGS = $(LIB) $(LIB_NAMES)
 EMPTY =
-
-ifeq ($(OS), WINDOWS)
-NAME := $(NAME)
-CC = $(WIN_CC)
-else
-endif
 
 all: libs name $(OBJ) done $(NAME)
 

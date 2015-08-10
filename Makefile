@@ -26,24 +26,15 @@ CFLAGS =		-Wall -Werror -Wextra
 #LIB_PATH =		./libfoo/ ./libbar/
 
 ifeq ($(OS), WINDOWS)
-<<<<<<< HEAD
-SDL2_WIN_PATH =	$(shell pwd)/SDL2
-LIB_SUPP_INC =	`SDL2/bin/sdl2-config --prefix=$(SDL2_WIN_PATH) --cflags`
-LIB_SUPP =		`SDL2/bin/sdl2-config --prefix=$(SDL2_WIN_PATH) --libs` -lSDL2_image
-else
-LIB_SUPP_INC =	`sdl2-config --cflags`
-LIB_SUPP =		`sdl2-config --libs` -lSDL2_image
-=======
 SDL2_WIN_PATH =		$(shell pwd)/SDL2
 LIB_SUPP_INC =		`SDL2/bin/sdl2-config --prefix=$(SDL2_WIN_PATH) --cflags`
-LIB_SUPP =		`SDL2/bin/sdl2-config --prefix=$(SDL2_WIN_PATH) --libs`
+LIB_SUPP =		`SDL2/bin/sdl2-config --prefix=$(SDL2_WIN_PATH) --libs` -lSD2_image
 NAME := $(NAME)
 CC = $(WIN_CC)
 else
 LIB_SUPP_INC =		`sdl2-config --cflags`
-LIB_SUPP =		`sdl2-config --libs`
+LIB_SUPP =		`sdl2-config --libs` -lSDL2_image
 CC =			$(UNIX_CC)
->>>>>>> 2221a970adf755932271057e84d422ef27d49e83
 endif
 
 

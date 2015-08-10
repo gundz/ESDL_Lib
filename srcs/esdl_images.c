@@ -1,5 +1,7 @@
 #include <easy_sdl.h>
 
+#include <stdio.h>
+
 SDL_Texture			*Esdl_load_texture(t_esdl *esdl, char *path, int *w, int *h)
 {
 	SDL_Surface		*surf;

@@ -12,6 +12,7 @@ static void			Esdl_init_esdl(t_esdl *esdl, const int max_fps)
 	esdl->fps.update = 0;
 	esdl->run = 1;
 
+	esdl->fps.frameLimit = 0;
 	esdl->fps.limit = max_fps;
 	Esdl_fps_limit(esdl);
 }

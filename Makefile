@@ -1,12 +1,13 @@
 NAME =			libesdl.a
 
 SRCS =			\
-			esdl_init.c \
-			esdl_events.c \
-			esdl_fps.c \
-			esdl_draw.c \
-			esdl_color.c \
-			esdl_surface.c \
+				esdl_init.c \
+				esdl_events.c \
+				esdl_fps.c \
+				esdl_draw.c \
+				esdl_color.c \
+				esdl_surface.c \
+				esdl_images.c \
 
 #TYPE: LIB or PROGRAM
 TYPE =			LIB
@@ -25,12 +26,12 @@ CFLAGS =		-Wall -Werror -Wextra
 #LIB_PATH =		./libfoo/ ./libbar/
 
 ifeq ($(OS), WINDOWS)
-SDL2_WIN_PATH =		$(shell pwd)/SDL2
-LIB_SUPP_INC =		`SDL2/bin/sdl2-config --prefix=$(SDL2_WIN_PATH) --cflags`
-LIB_SUPP =		`SDL2/bin/sdl2-config --prefix=$(SDL2_WIN_PATH) --libs`
+SDL2_WIN_PATH =	$(shell pwd)/SDL2
+LIB_SUPP_INC =	`SDL2/bin/sdl2-config --prefix=$(SDL2_WIN_PATH) --cflags`
+LIB_SUPP =		`SDL2/bin/sdl2-config --prefix=$(SDL2_WIN_PATH) --libs` -lSDL2_image
 else
-LIB_SUPP_INC =		`sdl2-config --cflags`
-LIB_SUPP =		`sdl2-config --libs`
+LIB_SUPP_INC =	`sdl2-config --cflags`
+LIB_SUPP =		`sdl2-config --libs` -lSDL2_image
 endif
 
 

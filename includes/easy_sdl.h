@@ -14,6 +14,7 @@
 # define EASY_SDL_H
 
 # include <SDL.h>
+# include <SDL_image.h>
 
 typedef struct          s_input
 {
@@ -81,6 +82,8 @@ void                    Esdl_fps_limit(t_esdl *esdl);
 SDL_Surface             *Esdl_create_surface(int width, int height);
 void                    Esdl_put_pixel(SDL_Surface *const surf,
         const int x, const int y, const int color);
+
+SDL_Texture				*Esdl_load_texture(t_esdl *esdl, char *path);
 
 SDL_Color               Esdl_sdl_int_to_color(int color);
 int                     Esdl_sdl_color_to_int(SDL_Color color);

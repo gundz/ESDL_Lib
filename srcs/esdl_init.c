@@ -42,6 +42,9 @@ int					Esdl_init(t_esdl *esdl, const int rx, const int ry, const int max_fps, c
 		printf("%s\n", SDL_GetError());
 	}
 
+	esdl->en.rx = rx;
+	esdl->en.ry = ry;
+
 	esdl->en.ren = SDL_CreateRenderer(esdl->en.win, -1,
 			SDL_RENDERER_ACCELERATED);
 	if (!esdl->en.ren)

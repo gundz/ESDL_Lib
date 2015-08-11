@@ -17,9 +17,21 @@ static void			Esdl_init_esdl(t_esdl *esdl, const int max_fps)
 	Esdl_fps_limit(esdl);
 }
 
-void				Esdl_update_window_info(t_esdl *esdl)
+void				Esdl_update_window_info(t_esdl *esdl, void *data, void (*f)(int old_x, int old_y, int new_x, int new_y, void *data))
 {
-	SDL_GetWindowSize(esdl->en.win, &esdl->en.rx, &esdl->en.ry);
+	int				new_x;
+	int				new_y;
+
+	SDL_GetWindowSize(esdl->en.win, &new_x, &new_y);
+	if (new_x != esdl->en.rx || new_y != esdl->en.ry)
+	{
+		if (f != NULL)
+		{
+			f(esdl->en.rx, esdl->en.ry, new_x, new_y, data);
+		}
+		esdl->en.rx = new_x;
+		esdl->en.ry = new_y;
+	}
 }
 
 int					Esdl_init(t_esdl *esdl, const int rx, const int ry, const int max_fps, char *engine_name)

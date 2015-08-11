@@ -10,7 +10,7 @@ SDL_Texture			*Esdl_load_texture(t_esdl *esdl, char *path, int *w, int *h)
 
 	surf = IMG_Load(path);
 	if (w != NULL)
-		*h = surf->h;
+		*w = surf->w;
 	if (h != NULL)
 		*h = surf->h;
 	if (!surf)
@@ -21,7 +21,7 @@ SDL_Texture			*Esdl_load_texture(t_esdl *esdl, char *path, int *w, int *h)
 		rect.w = 32;
 		rect.h = 32;
 		if (w != NULL)
-			*h = 32;
+			*w = 32;
 		if (h != NULL)
 			*h = 32;
 		surf = Esdl_create_surface(32, 32);

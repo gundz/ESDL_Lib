@@ -87,8 +87,12 @@ int                     Esdl_sdl_color_to_int(SDL_Color color);
 
 void                    Esdl_draw_line(SDL_Surface *surf, SDL_Rect rect,
         const int color);
-void                    Esdl_draw_square(SDL_Surface *surf, const SDL_Rect rect,
-        const int color);
+
+void                    Esdl_draw_square(SDL_Surface *surf, const SDL_Rect rect, const int color);
+void                    Esdl_draw_filled_square(SDL_Surface *surf, const SDL_Rect rect, const int color);
+
+void                    Esdl_draw_circle(SDL_Surface *surf, int x0, int y0, const int radius, const int color);
+
 void                    Esdl_clear_screen(SDL_Surface *surf, const int color);
 
 #endif

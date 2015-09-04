@@ -23,7 +23,7 @@ SDL_Texture			*Esdl_load_texture(t_esdl *esdl, char *path, int *w, int *h)
 		if (h != NULL)
 			*h = 32;
 		surf = Esdl_create_surface(32, 32);
-		Esdl_draw_square(surf, rect, 0xFF69B4FF);
+		Esdl_draw_filled_square(surf, rect, 0xFF69B4FF);
 	}
 	tex = SDL_CreateTextureFromSurface(esdl->en.ren, surf);
 	SDL_FreeSurface(surf);

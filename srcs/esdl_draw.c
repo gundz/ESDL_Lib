@@ -33,13 +33,10 @@ void			Esdl_draw_circle(SDL_Surface *surf, int x0, int y0, const int radius, con
 	{
 		Esdl_put_pixel(surf, x + x0, y + y0, color);
 		Esdl_put_pixel(surf, y + x0, x + y0, color);
-
 		Esdl_put_pixel(surf, -x + x0, y + y0, color);
 		Esdl_put_pixel(surf, -y + x0, x + y0, color);
-
 		Esdl_put_pixel(surf, x + x0, -y + y0, color);
 		Esdl_put_pixel(surf, y + x0, -x + y0, color);
-
 		Esdl_put_pixel(surf, -x + x0, -y + y0, color);
 		Esdl_put_pixel(surf, -y + x0, -x + y0, color);
 		if (m > 0)
@@ -57,14 +54,14 @@ void			Esdl_draw_square(SDL_Surface *surf, SDL_Rect rect, const int color)
 	int			i;
 	int			j;
 
-	i = rect.y;
+	i = 0;
 	while (i < rect.h)
 	{
-		j = rect.x;
+		j = 0;
 		while (j < rect.w)
 		{
 			if ((i == 0 || i == rect.h - 1) || (j == 0 || j == rect.w - 1))
-				Esdl_put_pixel(surf, j, i, color);
+				Esdl_put_pixel(surf, j + rect.x, i + rect.y, color);
 			j++;
 		}
 		i++;

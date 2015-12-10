@@ -18,7 +18,7 @@ void			Esdl_put_pixel(SDL_Surface *const surf, const int x, const int y, const i
 		SDL_LockSurface(surf);
 		bpp = surf->format->BytesPerPixel;
 		p = surf->pixels + y * surf->pitch + x * bpp;
-		*(Uint32 *)p = color;
+		*p = color;
 		SDL_UnlockSurface(surf);
 	}
 }

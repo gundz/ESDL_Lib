@@ -44,7 +44,7 @@
 	#LIB
 		LIB_INC = $(addprefix -I, $(addsuffix includes, $(LIB_PATH)))
 		LIB = $(addprefix -L, $(LIB_PATH))
-		INC += $(LIB_SUPP_INC)
+		INC += $(LIB_INC) $(LIB_SUPP_INC)
 		LDFLAGS = $(LIB) $(LIB_NAMES) $(LIB_SUPP)
 		EMPTY =
 
@@ -64,7 +64,7 @@ endif
 $(OBJ_PATH)%.o: $(SRC_PATH)%.$(EXTENTION)
 	@ printf $(COMILING_PROGRESS)
 	@ mkdir -p $(OBJ_PATH) 2> /dev/null
-	@ $(CC) $(CFLAGS) $(INC) $(LIB_INC) -c $< -o $@
+	@ $(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 #COMPILING SUBLIBS
 ifeq ($(LIB_PATH), $(EMPTY))

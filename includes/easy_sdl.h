@@ -65,6 +65,9 @@ typedef struct          s_esdl
     int                 run;
 }                       t_esdl;
 
+#define SDL_RX data->esdl->en.rx
+#define SDL_RY data->esdl->en.ry
+
 int						Esdl_init(t_esdl *esdl, const int rx, const int ry, const int max_fps, char *engine_name);
 void               	    Esdl_quit(t_esdl *esdl);
 

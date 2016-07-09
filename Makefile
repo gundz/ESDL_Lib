@@ -50,7 +50,7 @@
 
 all: libs name $(OBJ) done $(NAME)
 
-$(NAME):
+$(NAME): $(OBJ)
 	@ printf $(COMPILING_BINARY)
 	@ printf $(COMILING_PROGRESS)
 ifeq ($(TYPE), LIB)

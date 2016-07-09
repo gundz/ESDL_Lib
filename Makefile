@@ -15,7 +15,7 @@
 
 	EXTENTION =		c
 
-	CFLAGS = 		-Wall -Werror -Wextra
+	CFLAGS = 		-Wall -Werror -Wextra -g
 
 #ADVANCED CONFIG
 	SRC_PATH =		./srcs/
@@ -57,14 +57,14 @@ ifeq ($(TYPE), LIB)
 	@ ar -rc $(NAME) $(OBJ)
 	@ ranlib $(NAME)
 else
-	@ $(CC) $(OBJ) $(LDFLAGS) -o $(NAME)
+	@ $(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) -o $(NAME)
 endif
 	@ printf $(COMPILING_DONE)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.$(EXTENTION)
 	@ printf $(COMILING_PROGRESS)
 	@ mkdir -p $(OBJ_PATH) 2> /dev/null
-	@ $(CC) $(INC) $(LIB_INC) -c $< -o $@
+	@ $(CC) $(CFLAGS) $(INC) $(LIB_INC) -c $< -o $@
 
 #COMPILING SUBLIBS
 ifeq ($(LIB_PATH), $(EMPTY))

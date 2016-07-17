@@ -10,16 +10,12 @@ int				ft_abs(int num)
 
 void			Esdl_put_pixel(SDL_Surface *const surf, const int x, const int y, const int color)
 {
-	int			bpp;
-	Uint32		*p;
+	Uint32 *pixels;
 
 	if ((x >= 0 && y >= 0) && (x < surf->w && y < surf->h))
 	{
-		SDL_LockSurface(surf);
-		bpp = surf->format->BytesPerPixel;
-		p = surf->pixels + y * surf->pitch + x * bpp;
-		*p = color;
-		SDL_UnlockSurface(surf);
+		pixels = (Uint32 *)surf->pixels;
+		pixels[(y * surf->w) + x] = color;
 	}
 }
 

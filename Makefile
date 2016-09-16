@@ -5,9 +5,11 @@
 					esdl_events.c \
 					esdl_fps.c \
 					esdl_draw.c \
+					esdl_draw_square.c \
 					esdl_color.c \
 					esdl_surface.c \
 					esdl_images.c \
+					tools.c \
 
 	NAME =			libesdl.a
 

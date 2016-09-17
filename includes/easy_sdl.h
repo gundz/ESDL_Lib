@@ -101,7 +101,6 @@ void					esdl_draw_square(SDL_Surface *surf, \
 void					esdl_draw_filled_square(SDL_Surface *surf, \
 	const SDL_Rect rect, const int color);
 
-
 void					esdl_draw_circle(SDL_Surface *surf, SDL_Rect rect, \
 	const int radius, const int color);
 

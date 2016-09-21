@@ -74,8 +74,7 @@ static void			write_tga_header(const int fd, const int w, const int h)
 	ft_putchar_fd(0x00, fd);
 }
 
-static void			write_data(const int fd, unsigned int *img,
-	const unsigned int w, const unsigned int h)
+static void			write_data(const int fd, unsigned int *img, const unsigned int w, const unsigned int h)
 {
 	int				i;
 	unsigned int	j;
@@ -86,9 +85,9 @@ static void			write_data(const int fd, unsigned int *img,
 		j = 0;
 		while (j < w)
 		{
-			ft_putchar_fd((char)((img[(i * w) + j]) & 0xFF), fd);
 			ft_putchar_fd((char)((img[(i * w) + j] >> 8) & 0xFF), fd);
 			ft_putchar_fd((char)((img[(i * w) + j] >> 16) & 0xFF), fd);
+			ft_putchar_fd((char)((img[(i * w) + j] >> 24) & 0xFF), fd);
 			j++;
 		}
 		i--;

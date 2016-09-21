@@ -10,6 +10,7 @@
 					esdl_surface.c \
 					esdl_images.c \
 					tools.c \
+					esdl_screenshot.c \
 
 	NAME =			libesdl.a
 

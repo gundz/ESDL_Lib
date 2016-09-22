@@ -13,7 +13,7 @@
 #include <easy_sdl.h>
 #include <string.h>
 
-static void			esdl_init_esdl(t_esdl *esdl)
+static void			esdl_init_esdl(t_esdl *esdl, const int rx, const int ry)
 {
 	memset(&esdl->en.in, 0, sizeof(t_input));
 	esdl->fps.current = 0;
@@ -22,6 +22,8 @@ static void			esdl_init_esdl(t_esdl *esdl)
 	esdl->run = 1;
 	esdl->fps.framelimit = 0;
 	esdl->fps.limit = MAX_FPS;
+	esdl->en.rx = rx;
+	esdl->en.ry = ry;
 	esdl_fps_limit(esdl);
 }
 
@@ -48,7 +50,7 @@ int					esdl_init(t_esdl *esdl, const int rx, const int ry, \
 {
 	int				ret;
 
-	esdl_init_esdl(esdl);
+	esdl_init_esdl(esdl, rx, ry);
 	ret = 0;
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 	{
@@ -63,8 +65,6 @@ int					esdl_init(t_esdl *esdl, const int rx, const int ry, \
 		ret = -1;
 		printf("%s\n", SDL_GetError());
 	}
-	esdl->en.rx = rx;
-	esdl->en.ry = ry;
 	esdl->en.ren = SDL_CreateRenderer(esdl->en.win, -1,
 			SDL_RENDERER_ACCELERATED);
 	if (!esdl->en.ren)

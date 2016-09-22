@@ -108,6 +108,12 @@ void					esdl_clear_screen(SDL_Surface *surf, const int color);
 
 int						ft_abs(int num);
 
-int					write_tga(char *name, unsigned int *img, const int w, const int h);
+int						write_tga(char *name, unsigned int *img, \
+	const int w, const int h);
+
+unsigned int			get_color_from_surf(SDL_Surface *surf, \
+	const int x, const int y);
+
+void					putchar_fd(char c, int fd);
 
 #endif

@@ -93,6 +93,8 @@ SDL_Texture				*esdl_load_texture(t_esdl *esdl, char *path, \
 SDL_Color				esdl_sdl_int_to_color(int color);
 int						esdl_sdl_color_to_int(SDL_Color color);
 
+int						esdl_hsv_to_rgb(float h, float s, float v);
+
 void					esdl_draw_line(SDL_Surface *surf, SDL_Rect rect, \
 	const int color);
 

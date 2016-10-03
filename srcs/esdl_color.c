@@ -35,35 +35,53 @@ int							esdl_color_to_int(SDL_Color color)
 	return (ret_color);
 }
 
-int
-esdl_hsv_to_rgb(float h, float s, float v)
+static int		hsv_set_color(float r, float g, float b)
 {
-    float r, g, b; //this function works with floats between 0 and 1
-    h = h / 256.0;
-    s = s / 256.0;
-    v = v / 256.0;
-     //If saturation is 0, the color is a shade of gray
-    if(s == 0) r = g = b = v;
-        //If saturation > 0, more complex calculations are needed
-    else
-    {
-        float f, p, q, t;
-        int i;
-        h *= 6; //to bring hue to a number between 0 and 6, better for the calculations
-        i = (int)floor(h);  //e.g. 2.7 becomes 2 and 3.01 becomes 3 or 4.9999 becomes 4
-        f = h - i;  //the fractional part of h
-        p = v * (1 - s);
-        q = v * (1 - (s * f));
-        t = v * (1 - (s * (1 - f)));
-        switch(i)
-        {
-            case 0: r = v; g = t; b = p; break;
-            case 1: r = q; g = v; b = p; break;
-            case 2: r = p; g = v; b = t; break;
-            case 3: r = p; g = q; b = v; break;
-            case 4: r = t; g = p; b = v; break;
-            case 5: r = v; g = p; b = q; break;
-        }
-    }
-    return (int)(r * 255.0) << 24 | (int)(g * 255.0) << 16 | (int)(b * 255.0) << 8 | 255;
+	return (\
+		(int)(r * 255.0) << 24 |\
+		(int)(g * 255.0) << 16 |\
+		(int)(b * 255.0) << 8 |\
+		255);
+}
+
+static void		hsv_to_rgb_else(float h, float s, float v, int *color)
+{
+	float 		f;
+	float 		p;
+	float 		q;
+	float 		t;
+	int			i;
+
+	h *= 6;
+	i = (int)floor(h);
+	f = h - i;
+	p = v * (1 - s);
+	q = v * (1 - (s * f));
+	t = v * (1 - (s * (1 - f)));
+	if (i == 0)
+		*color = hsv_set_color(v, t, p);
+	if (i == 1)
+		*color = hsv_set_color(q, v, p);
+	if (i == 2)
+		*color = hsv_set_color(p, v, t);
+	if (i == 3)
+		*color = hsv_set_color(p, q, v);
+	if (i == 4)
+		*color = hsv_set_color(t, p, v);
+	if (i == 5)
+		*color = hsv_set_color(v, p, q);
+}
+
+int				esdl_hsv_to_rgb(float h, float s, float v)
+{
+	int			color;
+
+	h = h / 256.0;
+	s = s / 256.0;
+	v = v / 256.0;
+	if(s == 0)
+		color = hsv_set_color(v, v, v);
+	else
+		hsv_to_rgb_else(h, s, v, &color);
+	return (color);
 }
